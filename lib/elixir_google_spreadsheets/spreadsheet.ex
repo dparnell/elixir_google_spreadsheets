@@ -55,8 +55,8 @@ defmodule GSS.Spreadsheet do
     end
 
     @spec fetch(pid, String.t) :: {:ok, spreadsheet_data} | {:error, Exception.t}
-    def fetch(pid, range) do
-        GenServer.call(pid, {:fetch, range})
+    def fetch(pid, range, timeout \\ 5000) do
+        GenServer.call(pid, {:fetch, range}, timeout)
     end
 
     @spec read_row(pid, Integer, Keyword.t) :: {:ok, spreadsheet_data} | {:error, Exception.t}
